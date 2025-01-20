@@ -88,7 +88,15 @@ section {
   text-align: left;
 }
 
-.showfilebox {
+#filewrapper:not(:empty) {
+  padding: 10px;
+  background-color: var(--white);
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
+.showfilebox,
+#filewrapper li {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -118,9 +126,11 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px dashed var(--secondary-main);
-  background-color: var(--secondary-light);
+  border: 1px dashed var(--primary-dark);
+  background-color: var(--primary-main);
+  color: var(--white);
   border-radius: 15px;
+  cursor: pointer;
 }
 .drag-files-box p {
   margin-bottom: 0;

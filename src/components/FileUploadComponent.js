@@ -79,6 +79,11 @@ function FileUploadComponent() {
       ]);
     }
   }, []);
+
+  const removeFile = (name) => {
+    setDragFiles((dragfiles) => dragfiles.filter((file) => file.name !== name));
+  };
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
@@ -157,9 +162,14 @@ function FileUploadComponent() {
             </div>
 
             {/* preview */}
-            <ul>
-              {dragfiles.map(file =>(
-                <li key={file.name}>{file.name}
+            <ul id="filewrapper">
+              {dragfiles.map((file) => (
+                <li key={file.name}>
+                  {file.name}
+                  <div
+                    className="close-icon"
+                    onClick={() => removeFile(file.name)}
+                  ></div>
                 </li>
               ))}
             </ul>
