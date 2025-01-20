@@ -11,6 +11,7 @@ function DatepickerComponent() {
       <div className="custom-box">
         <div className="row">
           <div className="col">
+            <p>Basic Datepicker</p>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer components={["DatePicker"]}>
                 <DatePicker label="Basic date picker" />
