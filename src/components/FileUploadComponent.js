@@ -4,31 +4,34 @@ import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import { Typography } from "@mui/material";
 
 const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
+  height: "100%",
   overflow: "hidden",
   position: "absolute",
   bottom: 0,
   left: 0,
   whiteSpace: "nowrap",
-  width: 1,
+  width: "100%",
+  opacity: 0,
 });
 
 function FileUploadComponent() {
   const [file, setFile] = useState([]);
+
   const singlehandleFileChange = (e) => {
     const files = e.target.files;
-    // const newFile = [];
-
-    let fileName = files[0].name;
+    const fileName = files[0]?.name;
     console.log(fileName);
+
+    if (fileName) {
+      setFile([fileName]); // Update the state with the selected file's name
+    }
   };
 
   const singlehandleFileRemove = (fileName) => {
-    setFile(file.filter((file) => file !== fileName));
+    setFile(file.filter((file) => file !== fileName)); // Remove the file from the state
   };
 
   // State to store uploaded file names
@@ -88,11 +91,11 @@ function FileUploadComponent() {
 
   return (
     <>
-      <h1>File Upload Demo</h1>
+      <Typography variant="h1">File Upload Demo</Typography>
       <div className="custom-box">
         <div className="row">
           <div className="col">
-            <p>Single file upload</p>
+            <Typography variant="p">Single file upload</Typography>
             <Button
               fullWidth
               size="large"
@@ -109,19 +112,19 @@ function FileUploadComponent() {
               />
             </Button>
             <div id="filewrapper">
-              {file.map((fileName, index) => (
-                <div key={index} className="showfilebox">
-                  <div className="file">{fileName}</div>
+              {file.length > 0 && (
+                <div key={file[0]} className="showfilebox">
+                  <div className="file">{file[0]}</div>
                   <div
                     className="close-icon"
-                    onClick={() => singlehandleFileRemove(fileName)}
+                    onClick={() => singlehandleFileRemove(file[0])}
                   ></div>
                 </div>
-              ))}
+              )}
             </div>
           </div>
           <div className="col">
-            <p>Multiple files upload</p>
+            <Typography variant="p">Multiple files upload</Typography>
             <Button
               fullWidth
               size="large"
@@ -151,17 +154,18 @@ function FileUploadComponent() {
             </div>
           </div>
           <div className="col">
-            <p>Drag & drop file upload</p>
+            <Typography variant="p">Drag & drop file upload using Dropzone</Typography>
             <div {...getRootProps()} className="drag-files-box">
               <input {...getInputProps()} />
               {isDragActive ? (
-                <p>Drop the files here ...</p>
+                <Typography variant="p">Drop the files here ...</Typography>
               ) : (
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <Typography variant="p">
+                  Drag 'n' drop some files here, or click to select files
+                </Typography>
               )}
             </div>
 
-            {/* preview */}
             <ul id="filewrapper">
               {dragfiles.map((file) => (
                 <li key={file.name}>

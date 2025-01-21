@@ -26,14 +26,6 @@ ul,
 ol {
   list-style: none;
 }
-p {
-  text-align: left;
-  margin-bottom: 15px;
-}
-h1 {
-  margin-bottom: 15px;
-  text-align: center;
-}
 section {
   padding: 50px 0;
 }
@@ -55,6 +47,7 @@ section {
 .row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   width: 100%;
 }
@@ -62,31 +55,45 @@ section {
   flex: 0 0 calc(50% - 30px);
   max-width: calc(50% - 30px);
 }
+
+/*style for navigation*/
 .nav-listing {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 32px;
+  margin-top: 45px;
 }
 
 .nav-listing li {
   flex: 0 0 25%;
   max-width: 25%;
+}
+
+.nav-listing li a {
+  border-radius: 5px;
   background-color: var(--primary-light);
   border: 1px solid var(--primary-dark);
-  border-radius: 3px;
-}
-.nav-listing li a {
   display: block;
   padding: 12px;
   font-size: 18px;
   font-weight: 500;
   color: var(--primary-dark);
   text-decoration: none;
+  transition: all 0.3s;
 }
+
+.nav-listing li a:hover {
+  color: var(--white);
+  background-color: var(--primary-main);
+  border-color: var(--white);
+}
+
 .MuiInputBase-root {
   text-align: left;
 }
+
+/*style for file upload*/
 
 #filewrapper:not(:empty) {
   padding: 10px;
@@ -132,6 +139,50 @@ section {
   border-radius: 15px;
   cursor: pointer;
 }
-.drag-files-box p {
+.drag-files-box .MuiTypography-p {
   margin-bottom: 0;
+}
+
+/* style for select-search */
+
+.select-search div {
+  text-align: left;
+}
+.select-search .css-1u9des2-indicatorSeparator {
+  display: none;
+}
+.select-search .css-1jqq78o-placeholder {
+  color: rgba(0, 0, 0, 0.65);
+}
+.select-search .css-13cymwt-control {
+  background-color: transparent;
+  padding: 8px;
+}
+.select-search .css-t3ipsp-control {
+  box-shadow: 0 0 0 1px var(--primary-main);
+  background-color: transparent;
+  border-color: var(--primary-main);
+  padding: 8px;
+}
+.select-search .css-t3ipsp-control:hover {
+  border-color: var(--primary-main);
+}
+.select-search .css-tr4s17-option {
+  background-color: var(--primary-dark);
+}
+.select-search .css-d7l1ni-option {
+  background-color: var(--primary-light);
+}
+.select-search .css-10wo9uf-option:active {
+  background-color: var(--primary-main);
+}
+.select-search .css-1p3m7a8-multiValue {
+  background-color: var(--white);
+}
+.select-search .css-9jq23d {
+  color: var(--primary-dark);
+}
+.select-search .css-v7duua:hover {
+  background-color: var(--primary-main);
+  color: var(--white);
 }

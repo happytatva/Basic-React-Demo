@@ -3,9 +3,9 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import { Slide } from "@mui/material";
-
+import { Typography } from "@mui/material";
 
 function SnackBarComponent() {
   const [open, setOpen] = React.useState(false);
@@ -61,11 +61,11 @@ function SnackBarComponent() {
 
   return (
     <>
-      <h1>Snackbar Demo</h1>
+      <Typography variant="h1">Snackbar Demo</Typography>
       <div className="custom-box">
         <div className="row">
           <div className="col">
-            <p>Basic snackbar</p>
+            <Typography variant="p">Basic snackbar</Typography>
             <Button onClick={handleClick} variant="contained">
               Open Snackbar
             </Button>
@@ -78,7 +78,9 @@ function SnackBarComponent() {
             />
           </div>
           <div className="col">
-            <p>Snackbar with directions & action</p>
+            <Typography variant="p">
+              Snackbar with directions & action
+            </Typography>
             <Button
               variant="contained"
               onClick={newhandleClick({ vertical: "top", horizontal: "right" })}

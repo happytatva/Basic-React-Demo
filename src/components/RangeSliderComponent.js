@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack";
 import Slider from "@mui/material/Slider";
 import VolumeDown from "@mui/icons-material/VolumeDown";
 import VolumeUp from "@mui/icons-material/VolumeUp";
+import { Typography } from "@mui/material";
 
 function RangeSliderComponent() {
   const [value, setValue] = React.useState(30);
@@ -12,11 +13,11 @@ function RangeSliderComponent() {
   };
   return (
     <>
-      <h1>Range Sliders Demo</h1>
+      <Typography variant="h1">Range Sliders Demo</Typography>
       <div className="custom-box">
         <div className="row">
           <div className="col">
-            <p>Range slider with icons</p>
+            <Typography variant="p">Range slider with icons</Typography>
             <Stack
               spacing={2}
               direction="row"
@@ -30,11 +31,11 @@ function RangeSliderComponent() {
               />
               <VolumeUp />
             </Stack>
-            <p>Disabled basic slider</p>
+            <Typography variant="p">Disabled basic slider</Typography>
             <Slider disabled defaultValue={30} aria-label="Disabled slider" />
           </div>
           <div className="col">
-            <p>Slider with tooltip</p>
+            <Typography variant="p">Slider with tooltip</Typography>
             <Slider
               size="small"
               defaultValue={70}

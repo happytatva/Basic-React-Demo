@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { Typography } from "@mui/material";
 
 const sportsGames = [
   { label: "Badminton" },
@@ -160,15 +161,14 @@ const options = top100Films.map((option) => {
   };
 });
 
-
 function AutoCompleteComponent() {
   return (
     <>
-      <h1>Autocomplete Demo</h1>
+      <Typography variant="h1">Autocomplete Demo</Typography>
       <div className="custom-box">
         <div className="row">
           <div className="col">
-            <p>Basic autocomplete</p>
+            <Typography variant="p">Basic autocomplete</Typography>
             <Autocomplete
               disablePortal //to make optionpallete within parent element
               options={sportsGames}
@@ -179,7 +179,7 @@ function AutoCompleteComponent() {
             />
           </div>
           <div className="col">
-            <p>Advanced autocomplete</p>
+            <Typography variant="p">Advanced autocomplete</Typography>
             <Autocomplete
               options={options.sort(
                 (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
@@ -196,7 +196,9 @@ function AutoCompleteComponent() {
             />
           </div>
           <div className="col">
-            <p>Autocomplete with disabled options</p>
+            <Typography variant="p">
+              Autocomplete with disabled options
+            </Typography>
             <Autocomplete
               options={randomListing}
               renderInput={(params) => (

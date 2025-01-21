@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import OutlinedInput from '@mui/material/OutlinedInput';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
-import Chip from '@mui/material/Chip';
-import Box from '@mui/material/Box';
-
+import OutlinedInput from "@mui/material/OutlinedInput";
+import ListItemText from "@mui/material/ListItemText";
+import Checkbox from "@mui/material/Checkbox";
+import Chip from "@mui/material/Chip";
+import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
+import SearchSelect from "react-select";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 8;
@@ -34,6 +39,24 @@ const names = [
   "Kelly Snyder",
 ];
 
+const flavours = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "mango", label: "Mango" },
+  { value: "butterscotch", label: "Butterscotch" },
+  { value: "kesar-pista", label: "Kesar Pista" },
+];
+
+const multiflavours = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "mango", label: "Mango" },
+  { value: "butterscotch", label: "Butterscotch" },
+  { value: "kesar-pista", label: "Kesar Pista" },
+];
+
 function SelectComponent() {
   // for Simple Select
   const [job, setJob] = React.useState("");
@@ -55,13 +78,47 @@ function SelectComponent() {
     );
   };
 
+  // for select Search
+  // const [selectedOption, setSelectedOption] = useState(null);
+
+  //for icon select
+  const data = [
+    {
+      value: 1,
+      text: "Up Arrow",
+      icon: <ArrowUpwardIcon />,
+    },
+    {
+      value: 2,
+      text: "Down Arrow",
+      icon: <ArrowDownwardIcon />,
+    },
+    {
+      value: 3,
+      text: "Left Arrow",
+      icon: <ArrowForwardIcon />,
+    },
+    {
+      value: 4,
+      text: "Right Arrow",
+      icon: <ArrowBackIcon />,
+    },
+  ];
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  // handle onChange event of the dropdown
+  const iconSelectHandleChange = (e) => {
+    setSelectedOption(e);
+  };
+
   return (
     <>
-      <h1>Select Demo</h1>
+      <Typography variant="h1">Select Demo</Typography>
       <div className="custom-box">
         <div className="row">
           <div className="col">
-            <p>Single select without search</p>
+            <Typography variant="p">Single select without search</Typography>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Select Job</InputLabel>
               <Select
@@ -71,7 +128,9 @@ function SelectComponent() {
                 label="Select Job"
                 onChange={handleChange}
               >
-                <MenuItem value="Frontend Developer">Frontend Developer</MenuItem>
+                <MenuItem value="Frontend Developer">
+                  Frontend Developer
+                </MenuItem>
                 <MenuItem value="Backend Developer">Backend Developer</MenuItem>
                 <MenuItem value="QA Engineer">QA Engineer</MenuItem>
                 <MenuItem value="Business Analyst">Business Analyst</MenuItem>
@@ -82,7 +141,7 @@ function SelectComponent() {
             </FormControl>
           </div>
           <div className="col">
-            <p>Multiple select without search</p>
+            <Typography variant="p">Multiple select without search</Typography>
             <FormControl fullWidth>
               <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
               <Select
@@ -93,7 +152,7 @@ function SelectComponent() {
                 onChange={multipleHandleChange}
                 input={<OutlinedInput label="Tag" />}
                 renderValue={(selected) => (
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                     {selected.map((value) => (
                       <Chip key={value} label={value} />
                     ))}
@@ -109,6 +168,43 @@ function SelectComponent() {
                 ))}
               </Select>
             </FormControl>
+          </div>
+          <div className="col">
+            <Typography variant="p">Single select with search</Typography>
+            <SearchSelect
+              className="select-search"
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={flavours}
+              placeholder="You can search here"
+            />
+          </div>
+          <div className="col">
+            <Typography variant="p">Multiple Select with search</Typography>
+            <SearchSelect
+              className="select-search"
+              isMulti
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={multiflavours}
+              placeholder="You can search here"
+            />
+          </div>
+          <div className="col">
+            <Typography variant="p">Icon dropdown</Typography>
+            <SearchSelect
+              className="select-search"
+              placeholder="Select Option"
+              value={selectedOption}
+              options={data}
+              onChange={iconSelectHandleChange}
+              getOptionLabel={(e) => (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  {e.icon}
+                  <span style={{ marginLeft: 5 }}>{e.text}</span>
+                </div>
+              )}
+            />
           </div>
         </div>
       </div>

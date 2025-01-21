@@ -11,13 +11,28 @@ const theme = createTheme({
       main: "#fc0882",
       light: "#fd93c8",
       dark: "#d4006a",
-      contrastText: "#ffffff"
+      contrastText: "#ffffff",
+    },
+  },
+  breakpoints: {
+    values: {
+      mobile: 0,
+      tablet: 640,
+      laptop: 1024,
+      desktop: 1200,
     },
   },
   typography: {
     fontFamily: ["Arial, Helvetica, sans-serif"],
     h1: {
-      fontSize: 50,
+      fontSize: 40,
+      marginBottom: 15,
+      fontWeight: 600,
+    },
+    p: {
+      marginBottom: 15,
+      display: "block",
+      fontSize: 16,
     },
   },
   components: {
