@@ -74,7 +74,7 @@ function SnackBarComponent() {
               onClose={handleClose}
               message="Wohoo🎉🎉!! You opened me."
               action={action}
-              autoHideDuration={2000}
+              // autoHideDuration={6000}
             />
           </div>
           <div className="col">
@@ -99,7 +99,7 @@ function SnackBarComponent() {
                 // onClose={newhandleClose}
                 severity="success"
                 variant="filled"
-                sx={{ width: "100%" }}
+                // sx={{ width: "100%" }}
               >
                 This is a success Alert inside a Snackbar!
               </Alert>
