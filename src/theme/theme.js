@@ -25,7 +25,7 @@ const theme = createTheme({
   typography: {
     fontFamily: ["Arial, Helvetica, sans-serif"],
     h1: {
-      fontSize: 40,
+      fontSize: 36,
       marginBottom: 15,
       fontWeight: 600,
     },
